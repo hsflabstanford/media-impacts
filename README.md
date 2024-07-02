@@ -3,7 +3,7 @@ Code and data to reproduce the paper "Documentary films can increase nationwide 
 
 To reproduce figures from saved results: 
 run the notebooks in the visualization directory. Specifically:
-- create-media-plots reproduces Figure 2.
+- create-media-plots.ipynb reproduces Figure 2.
 - visualize-time-series.ipynb reproduces Figures 3 and 7.
 - visualize-benchmarking-time-series.ipynb reproduces Figure 12.
 - create-all-docs-table.ipynb reproduces Tables 20 and 21.
@@ -20,4 +20,6 @@ To reproduce figures from raw data:
 - run the notebooks in the data-preparation directory.
 - run the notebooks in the analyses directory, specifically ardl_and_its.ipynb and descriptive-ipynb.
 - run the notebooks in the visualization directory as described above. You will need to change the names of the results directories.
+
+Please contact Anna Thomas (thomasat@stanford.edu) with questions. 
 
