@@ -1,5 +1,5 @@
 # media-impacts
-Code and data to reproduce the paper "Documentary films can increase nationwide interest in plant-based food"
+Code and data to reproduce the paper "Documentary films can increase nationwide interest in plant-based food".
 
 To reproduce figures from saved results: 
 run the notebooks in the **visualization** directory. Specifically:
