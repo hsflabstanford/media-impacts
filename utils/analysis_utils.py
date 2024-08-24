@@ -349,3 +349,79 @@ def run_analysis(dct, df, trt_lag, non_add_L_set,
     #print('d: ', x_beta/np.std(res.resid))
     
     return x_pval, x_beta, x_se, res
+
+def prepare_analysis_dct(df, X, Y, trt_lag, model, add_L, include_time, include_month, confounds, non_add_L_set):
+    analysis_dct = {'C': [], 'Ind_PS': []}
+    
+    if include_time:
+        #df['Time**2'] = df['Time']*df['Time']
+        analysis_dct['C'].append(('Time', [0]))
+        analysis_dct['Ind_PS'].append(('Time', [0]))
+        #analysis_dct['C'].append(('Time**2', [0]))
+        #analysis_dct['Ind_PS'].append(('Time**2', [0]))
+        
+    if include_month:
+        month_dummies = []
+        month_vals = sorted(df['Month'].unique())
+        for val_idx in range(len(month_vals)):
+            if val_idx == 0:
+                continue
+            this_val = month_vals[val_idx]
+            df['Month_Dummy' + str(this_val)] = (df['Month'] == this_val).astype(float)
+            month_dummies.append('Month_Dummy' + str(this_val))
+        
+        
+            analysis_dct['C'].append(('Month_Dummy' + str(this_val), [0]))
+            analysis_dct['Ind_PS'].append(('Month_Dummy' + str(this_val), [0]))
+    
+    
+    if model == 'lagged':
+        #"""
+        analysis_dct['X'] = (X, [trt_lag,trt_lag+1])
+        analysis_dct['Y'] = (Y, [trt_lag+1])
+         
+        
+        for c in confounds:
+            if add_L and c not in non_add_L_set:
+                analysis_dct['C'].append((c, [trt_lag,trt_lag+1]))
+            else:
+                analysis_dct['C'].append((c, [trt_lag+1]))
+                
+                
+        analysis_dct['Dep_PS'] = (X, [0])
+        analysis_dct['Ind_PS'] += [(X, [1]), (Y, [1])]
+
+        for c in confounds:
+            analysis_dct['Ind_PS'].append((c, [1]))          
+            if add_L:
+                analysis_dct['Ind_PS'].append((c, [0]))   
+
+    elif model == 'contemp':
+        analysis_dct['X'] = (X, [0,1])
+        analysis_dct['Y'] = (Y, [1]) 
+        
+        for c in confounds:
+            if add_L and c not in non_add_L_set:
+                analysis_dct['C'].append((c, [0,1]))
+            else:
+                analysis_dct['C'].append((c, [1]))  
+                
+        analysis_dct['Dep_PS'] = (X, [0])
+        analysis_dct['Ind_PS'] += [(X, [1]), (Y, [1])]
+
+        for c in confounds:
+            analysis_dct['Ind_PS'].append((c, [1]))          
+            if add_L:
+                analysis_dct['Ind_PS'].append((c, [0]))                 
+
+
+    elif model == 'assoc':
+        analysis_dct['Dep_PS'] = None
+        analysis_dct['Ind_PS'] = None
+        analysis_dct['X'] = (X, [0])
+        analysis_dct['Y'] = (Y, []) 
+    
+    else:
+        assert 0
+    
+    return df, analysis_dct
