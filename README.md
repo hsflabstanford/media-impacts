@@ -2,7 +2,7 @@
 Code and data to reproduce the paper "Documentary films can increase nationwide interest in plant-based food".
 
 Dependencies: matplotlib (3.1.1), statsmodels (0.13.5), scipy (1.7.3), numpy (1.21.5), pandas (1.3.5), seaborn (0.12.2).
-Tested on Max OS Sonoma 14.6.1
+Tested on Mac OS Sonoma 14.6.1
 
 Installation: git clone https://github.com/hsflabstanford/media-impacts.git
 Install time: < 1 minute. 
