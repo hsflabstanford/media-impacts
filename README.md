@@ -19,12 +19,12 @@ run the notebooks in the **visualization** directory. Specifically:
 - create-tables.ipynb creates the tables for association, contemporaneous and lagged analyses, other than Tables 20 and 21.
 
 To reproduce figures from pre-processed data: 
-- run the notebooks in the **analyses** directory, specifically ardl_and_its.ipynb and descriptive-ipynb.
+- run the notebooks in the **analyses** directory, specifically ardl-and-its.ipynb and descriptive-ipynb.
 - run the notebooks in the **visualization** directory as described above. You will need to change the names of the results directories.
 
 To reproduce figures from raw data: 
 - run the notebooks in the **data-preparation** directory.
-- run the notebooks in the **analyses** directory, specifically ardl_and_its.ipynb and descriptive-ipynb.
+- run the notebooks in the **analyses** directory, specifically ardl-and-its.ipynb and descriptive-ipynb.
 - run the notebooks in the **visualization** directory as described above. You will need to change the names of the results directories.
 
 Please contact Anna Thomas (thomasat@stanford.edu) with questions. 
