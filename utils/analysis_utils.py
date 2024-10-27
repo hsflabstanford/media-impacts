@@ -501,6 +501,20 @@ def run_controls(df, pval_thresh=0.05, PS=False, PS_logistic=False, fit_method='
     print('Neg Control #2 success fraction: ', float(passed2)/total2, 'Passed: ',  passed2, 'Total: ', total2)
     print('Neg Control success fraction: ', float(passed1 + passed2)/(total1 + total2), 'Passed: ',  passed1 + passed2, 'Total: ', total1 + total2)
 
+def eval_pval(pval, thresh1, thresh2, sens_pvals=None):
+    if pval < thresh2:
+        if sens_pvals:
+            for sens_pval in sens_pvals:
+                if sens_pval >= thresh2:
+                    return '**'
+            return '***'
+        else:
+            return '**'
+    elif pval < thresh1:
+        return '*'
+    else:
+        return ''
+
 """
 Models: assoc, lagged, contemp, bin.
 Assoc: Y_t ~ X_t
