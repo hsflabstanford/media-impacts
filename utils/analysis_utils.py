@@ -510,7 +510,8 @@ Bin: Y_t ~ PS + I_t + I_t*Time + Time + L_t + Month #+ Y_t-1
 """
 def run_primary_analyses(df, X, outcome, PS=False, PS_logistic=False, fit_method='OLS', model='lagged', 
                          add_L=True, difference=False, include_time=False, 
-                         include_month=False, duration_months=None, normalize=False, verbose=False):
+                         include_month=False, duration_months=None, normalize=False, verbose=False, 
+                        units='months'):
     assert model in ['assoc', 'lagged', 'contemp', 'bin']
     if model is 'assoc':
         assert add_L is False
