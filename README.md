@@ -22,7 +22,7 @@ To reproduce figures from pre-processed data (< 5 minutes):
 - run the notebooks in the **analyses** directory, specifically ardl-and-its.ipynb and descriptive-ipynb.
 - run the notebooks in the **visualization** directory as described above. You will need to change the names of the results directories.
 
-To reproduce figures from raw data (< 5 minutes): 
+To reproduce figures from raw data (< 10 minutes): 
 - run the notebooks in the **data-preparation** directory.
 - run the notebooks in the **analyses** directory, specifically ardl-and-its.ipynb and descriptive-ipynb.
 - run the notebooks in the **visualization** directory as described above. You will need to change the names of the results directories.
